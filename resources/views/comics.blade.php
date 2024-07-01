@@ -8,6 +8,7 @@
     <div class="cardContainer">
         @foreach ($fumetti as $indice => $fumetto)
             <div class="card">
+                {{-- Bonus: posso usare route("qualcosa") ?? --}}
                 <a href="/comics/{{ $indice }}">
                     <img src="{{ $fumetto['thumb'] }}" alt="{{ $fumetto['title'] }}" />
                 </a>
