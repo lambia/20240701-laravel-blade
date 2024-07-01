@@ -8,9 +8,8 @@
     <div class="cardContainer">
         @foreach ($fumetti as $indice => $fumetto)
             <div class="card">
-                <img src="{{ $fumetto['thumb'] }}" alt="{{ $fumetto['title'] }}" />
                 <a href="/comics/{{ $indice }}">
-                    <h2>{{ $fumetto['title'] }}</h2>
+                    <img src="{{ $fumetto['thumb'] }}" alt="{{ $fumetto['title'] }}" />
                 </a>
             </div>
         @endforeach

@@ -39,15 +39,43 @@ header nav > a {
 .cardContainer {
     display: flex;
     flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .card {
-    width: 25%;
+    /*
+    il gap è di 1rem
+    ci sono 4 cards, quindi 3 spazi nel mezzo
+    3 spazi x 1rem = 3rem totali
+    ad ogni card (delle 4) tolgo 1/4 dello spazio totale
+    quindi 3rem totali / 4
+     */
+    width: calc(25% - 3rem / 4);
+    overflow: hidden;
 
     img {
         width: 100%;
-        height: 16rem;
+        aspect-ratio: 9/16;
         object-fit: cover;
+        display: block;
+        transition: all 250ms;
+    }
+
+    img:hover {
+        transform: scale(1.2);
+    }
+}
+
+.dettaglio-fumetto {
+    display: flex;
+
+    .preview {
+        width: 30%;
+    }
+
+    .details {
+        width: 70%;
+        padding: 1rem;
     }
 }
 
