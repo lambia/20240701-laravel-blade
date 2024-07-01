@@ -27,7 +27,7 @@ Route::get('/', function () {
     ];
 
     return view('home', $data);
-});
+})->name("home");
 
 //Rotta di test, richiama sempre la vista "home" ma usando il compact
 Route::get('/test', function () {
@@ -56,7 +56,7 @@ Route::get('/credits', function () {
 Route::get('/about', function () {
 
     return view('about', config("data.store") );
-});
+})->name("about");
 
 //Per la rotta /comics stampo la lista dei fumetti nella vista "comics"
 Route::get('/comics', function() {
@@ -64,4 +64,18 @@ Route::get('/comics', function() {
     $data = config("data.comics");
 
     return view('comics', $data);
-});
+})->name("comics-list");
+
+//Per la rotta /comics/indice stampo il fumetto singolo nella vista "comicDetail"
+Route::get('/comics/{indice}', function($indice) {
+
+    $allData = config("data.comics");
+    $arrayFumetti = $allData["fumetti"];
+    //EXTRA: controllare se $indice è un valore valido
+    $singoloFumetto = $arrayFumetti[$indice];
+    $fumettoData = [
+        "fumetto" => $singoloFumetto
+    ];
+
+    return view('comics-details', $fumettoData);
+})->name("comics-details");

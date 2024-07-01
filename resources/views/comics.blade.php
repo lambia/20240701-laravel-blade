@@ -1,35 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comics List</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+@section('title', 'Lista Fumetti')
 
-<body>
+@section('content')
+    <h1>Lista fumetti</h1>
 
-    @include('partials.header')
-
-    <div class="content-wrapper">
-
-        <h1>Lista fumetti</h1>
-
-        <div class="cardContainer">
-            @foreach ($fumetti as $fumetto)
-                <div class="card">
-                    <img src="{{ $fumetto['thumb'] }}" alt="{{ $fumetto['title'] }}" />
+    <div class="cardContainer">
+        @foreach ($fumetti as $indice => $fumetto)
+            <div class="card">
+                <img src="{{ $fumetto['thumb'] }}" alt="{{ $fumetto['title'] }}" />
+                <a href="/comics/{{ $indice }}">
                     <h2>{{ $fumetto['title'] }}</h2>
-                    <p>{{ $fumetto['description'] }}</p>
-                </div>
-            @endforeach
-        </div>
-
+                </a>
+            </div>
+        @endforeach
     </div>
-
-    @include('partials.footer')
-
-</body>
-
-</html>
+@endsection

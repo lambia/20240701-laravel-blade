@@ -1,39 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Laravel</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+@section("title", "Benvenuto in Home")
 
-<body>
+@section("content")
+    <h1>{{ $msg }}</h1>
+    <h2>Benvenuto nella home page</h2>
+    <p>{{ $description }}</p>
 
-    @include('partials.header')
+    <ul>
+        @foreach ($studenti as $studente)
+            <li>{{ $studente }}</li>
+        @endforeach
+    </ul>
 
-    <div class="content-wrapper">
-        <h1>{{ $msg }}</h1>
-        <h2>Benvenuto nella home page</h2>
-        <p>{{ $description }}</p>
+    <p>Ci sono {{ count($studenti) }} studenti</p>
 
-        <ul>
-            @foreach ($studenti as $studente)
-                <li>{{ $studente }}</li>
-            @endforeach
-        </ul>
-
-        <p>Ci sono {{ count($studenti) }} studenti</p>
-
-        @if (count($studenti) > 3)
-            <p>{{ count($studenti) }} è maggiore di 3</p>
-        @else
-            <p>{{ count($studenti) }} NON è maggiore di 3</p>
-        @endif
-    </div>
-
-    @include('partials.footer')
-
-</body>
-
-</html>
+    @if (count($studenti) > 3)
+        <p>{{ count($studenti) }} è maggiore di 3</p>
+    @else
+        <p>{{ count($studenti) }} NON è maggiore di 3</p>
+    @endif
+@endsection
